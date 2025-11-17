@@ -1,7 +1,7 @@
 {
-  "name": "@promethean-os/opencode-interface-plugin",
+  "name": "@open-hax/session-orchestrator",
   "version": "0.2.0",
-  "description": "Session Orchestrator Plugin for OpenCode (indexing + agent orchestration)",
+  "description": "Session orchestration and agent management plugin",
   "type": "module",
   "main": "dist/index.js",
   "publishConfig": {
