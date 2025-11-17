@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-only
 
-import { getContextStore } from './stores.js';
+import { getContextStore } from "./stores.js";
 
 type Message = {
   readonly id: string;
@@ -17,6 +17,7 @@ type CompileOptions = {
   readonly formatAssistantMessages?: boolean;
 };
 
+// This shuldn't be nessisary, there is already a compileContext function in @promethean-os/persistence
 export async function compileContext(
   textsOrOptions: readonly string[] | CompileOptions = [],
   ...legacyArgs: readonly [number?, number?, number?, boolean?]
@@ -42,7 +43,10 @@ export async function compileContext(
     // Get relevant messages based on query texts
     let relevantMessages: any[] = [];
     if (options.texts && options.texts.length > 0) {
-      relevantMessages = await store.getMostRelevant([...options.texts], queryLimit);
+      relevantMessages = await store.getMostRelevant(
+        [...options.texts],
+        queryLimit,
+      );
     }
 
     // Combine and deduplicate messages
@@ -55,13 +59,13 @@ export async function compileContext(
     return uniqueMessages.slice(0, limit).map(
       (entry): Message => ({
         id: entry.id,
-        role: entry.metadata?.role || 'user',
+        role: entry.metadata?.role || "user",
         content: entry.text,
         timestamp: entry.timestamp,
       }),
     );
   } catch (error) {
-    console.error('Error compiling context:', error);
+    console.error("Error compiling context:", error);
     return [];
   }
 }
