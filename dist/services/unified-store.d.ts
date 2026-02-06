@@ -13,18 +13,18 @@ export interface SearchResults {
 }
 export declare const sessionStoreAccess: {
     insert: (entry: any) => Promise<any>;
-    getMostRecent: (limit?: number) => Promise<import("@promethean-os/persistence").DualStoreEntry<"text", "timestamp">[]>;
-    getMostRelevant: (queries: readonly string[], limit?: number) => Promise<import("@promethean-os/persistence").DualStoreEntry<"text", "timestamp">[]>;
+    getMostRecent: (limit?: number) => Promise<any>;
+    getMostRelevant: (queries: readonly string[], limit?: number) => Promise<any>;
 };
 export declare const eventStoreAccess: {
     insert: (entry: any) => Promise<any>;
-    getMostRecent: (limit?: number) => Promise<import("@promethean-os/persistence").DualStoreEntry<"text", "timestamp">[]>;
-    getMostRelevant: (queries: readonly string[], limit?: number) => Promise<import("@promethean-os/persistence").DualStoreEntry<"text", "timestamp">[]>;
+    getMostRecent: (limit?: number) => Promise<any>;
+    getMostRelevant: (queries: readonly string[], limit?: number) => Promise<any>;
 };
 export declare const messageStoreAccess: {
     insert: (entry: any) => Promise<any>;
-    getMostRecent: (limit?: number) => Promise<import("@promethean-os/persistence").DualStoreEntry<"text", "timestamp">[]>;
-    getMostRelevant: (queries: readonly string[], limit?: number) => Promise<import("@promethean-os/persistence").DualStoreEntry<"text", "timestamp">[]>;
+    getMostRecent: (limit?: number) => Promise<any>;
+    getMostRelevant: (queries: readonly string[], limit?: number) => Promise<any>;
 };
 /**
  * Search across multiple stores with unified interface
