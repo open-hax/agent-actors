@@ -23,7 +23,7 @@ export function createSessionTools(
         limit: tool.schema.number().default(20).describe('Number of sessions to return'),
         offset: tool.schema.number().default(0).describe('Number of sessions to skip'),
       },
-      async execute(args) {
+      async execute(args: any) {
         try {
           const limit = validate.limit(args.limit, 20);
           const offset = validate.number(args.offset || 0, 'offset');
@@ -49,7 +49,7 @@ export function createSessionTools(
         limit: tool.schema.number().optional().describe('Number of messages to include'),
         offset: tool.schema.number().optional().describe('Number of messages to skip'),
       },
-      async execute(args) {
+      async execute(args: any) {
         try {
           const sessionId = validate.sessionId(args.sessionId);
           const limit = args.limit !== undefined ? validate.number(args.limit, 'limit') : undefined;
@@ -99,7 +99,7 @@ export function createSessionTools(
       args: {
         sessionId: tool.schema.string().describe('Session ID to close'),
       },
-      async execute(args) {
+      async execute(args: any) {
         try {
           const result = await closeSession({ sessionId: args.sessionId });
 
@@ -130,7 +130,7 @@ export function createSessionTools(
         title: tool.schema.string().optional().describe('Optional title for the session'),
         message: tool.schema.string().describe('Initial message/prompt for the session'),
       },
-      async execute(args) {
+      async execute(args: any) {
         try {
           const result: any = await spawnSession({
             title: args.title,
@@ -184,7 +184,7 @@ export function createSessionTools(
         k: tool.schema.number().optional().describe('Maximum number of results'),
         sessionId: tool.schema.string().optional().describe('Filter by session ID'),
       },
-      async execute(args) {
+      async execute(args: any) {
         try {
           const result = await searchSessions({
             query: args.query,

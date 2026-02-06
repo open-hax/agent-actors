@@ -16,7 +16,7 @@ export function createEventTools(): Record<string, ReturnType<typeof tool>> {
         eventType: tool.schema.string().optional().describe('Filter by event type'),
         sessionId: tool.schema.string().optional().describe('Filter by session ID'),
       },
-      async execute(args) {
+      async execute(args: any) {
         try {
           const result = await listEvents({
             query: args.query,

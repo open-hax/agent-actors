@@ -17,7 +17,7 @@ export function createReadOnlyMessageTools(
         sessionId: tool.schema.string().describe('Session ID'),
         limit: tool.schema.number().default(10).describe('Number of messages to return'),
       },
-      async execute(args) {
+      async execute(args: any) {
         try {
           const messages = await getSessionMessages(opencodeClient, args.sessionId);
           const limitedMessages = messages.slice(-args.limit);
@@ -37,7 +37,7 @@ export function createReadOnlyMessageTools(
         sessionId: tool.schema.string().describe('Session ID'),
         messageId: tool.schema.string().describe('Message ID'),
       },
-      async execute(args) {
+      async execute(args: any) {
         try {
           const result = await opencodeClient.session.message({
             path: { id: args.sessionId, messageID: args.messageId },
@@ -74,7 +74,7 @@ export function createMessageMutationTools(
         sessionId: tool.schema.string().describe('Session ID'),
         content: tool.schema.string().describe('Message content'),
       },
-      async execute(args) {
+      async execute(args: any) {
         try {
           const result = await opencodeClient.session.prompt({
             path: { id: args.sessionId },
