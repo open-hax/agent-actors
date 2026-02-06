@@ -243,7 +243,7 @@ export async function list({
 
     // Filter to only include actual session entries (those with session_ prefix)
     const sessionEntries = storedSessions.filter(
-      (entry) => entry.id && entry.id.startsWith('session_'),
+      (entry: any) => entry.id && entry.id.startsWith('session_'),
     );
     logDebug(debugEnabled, `filtered to ${sessionEntries?.length || 0} actual session entries`);
 
