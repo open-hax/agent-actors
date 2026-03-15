@@ -70,7 +70,7 @@ export function createContextTools(): Record<string, ReturnType<typeof tool>> {
         sessionId: tool.schema.string().optional().describe('Filter by session ID'),
         limit: tool.schema.number().default(20).describe('Maximum results per category'),
       },
-      async execute(args) {
+      async execute(args: any) {
         try {
           const query = validate.string(args.query, 'query');
           const limit = validate.limit(args.limit, 20);

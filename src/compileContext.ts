@@ -41,13 +41,10 @@ export async function compileContext(
     const recentMessages = await store.getMostRecent(recentLimit);
 
     // Get relevant messages based on query texts
-    let relevantMessages: any[] = [];
-    if (options.texts && options.texts.length > 0) {
-      relevantMessages = await store.getMostRelevant(
-        [...options.texts],
-        queryLimit,
-      );
-    }
+    const relevantMessages =
+      options.texts && options.texts.length > 0
+        ? [...(await store.getMostRelevant([...options.texts], queryLimit))]
+        : [];
 
     // Combine and deduplicate messages
     const allMessages = [...relevantMessages, ...recentMessages];
@@ -59,9 +56,9 @@ export async function compileContext(
     return uniqueMessages.slice(0, limit).map(
       (entry): Message => ({
         id: entry.id,
-        role: entry.metadata?.role || "user",
+        role: typeof entry.metadata?.role === "string" ? entry.metadata.role : "user",
         content: entry.text,
-        timestamp: entry.timestamp,
+        timestamp: entry.timestamp instanceof Date ? entry.timestamp.toISOString() : entry.timestamp,
       }),
     );
   } catch (error) {
