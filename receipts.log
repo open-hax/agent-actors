@@ -1,0 +1,2 @@
+2026-03-18T04:59:32Z | kind=observation | origin=agent-actors | owner=err | dod=fork-tax-start | pi=pi | host=err-Stealth-16-AI-Studio-A1VGG | manifest=.ημ/pending | refs=tsconfig.tsbuildinfo,Π | note=Begin recursive Π snapshot for typecheck-generated tsbuildinfo drift
+2026-03-18T04:59:32Z | kind=test-run | origin=agent-actors | owner=err | dod=fork-tax-verify | pi=pi | host=err-Stealth-16-AI-Studio-A1VGG | manifest=.ημ/pending | refs=pnpm-typecheck | tests=pnpm typecheck | note=Pass before Π snapshot
